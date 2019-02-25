@@ -1,0 +1,30 @@
+{
+    "name": "custom-oop-mvc/0.1",
+    "authors": [
+        {
+            "name": "Oskars Germovs",
+            "email": "oskars_germovs@inbox.lv"
+        }
+    ],
+    "require": {
+      "php": ">=7.0",
+      "ext-mysqli":"*",
+        "jenssegers/blade": "^1.1",
+        "pecee/simple-router": "4.2.0.6",
+        "symfony/var-dumper": "*",
+        "robmorgan/phinx": "^0.10.6"
+    },
+    "autoload": {
+      "psr-4": {
+        "App\\Http\\": "app/Http"
+      },
+      "classmap": [
+        "app/Http/"
+      ],
+        "files": [
+            "env.php",
+            "routes/web.php",
+            "helper.php"
+        ]
+    }
+}
