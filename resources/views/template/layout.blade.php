@@ -3,25 +3,48 @@
 @include('template.header')
 
 <body>
-<!--[if lte IE 9]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
-    your browser</a> to improve your experience and security.</p>
-<![endif]-->
 
-<!-- Container -->
-<div class="container pt-10">
-    @yield('content')
-</div>
-
-<footer class="pt-10">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h5 class="text-center text-uppercase">@include('template.footer')</h5>
-            </div>
+        <a class="navbar-brand" href="#">Printful Trial</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                
+                @if (request()->segments()['1'] == "admin")
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">Main Site</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">Dashboard</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/quiz/create">Create Quiz</a>
+                    </li>
+                @endif
+            </ul>
         </div>
     </div>
-</footer>
+</nav>
+
+<!-- Container -->
+<main class="container pt-5">
+    @yield('content')
+</main>
+
+<!-- Footer -->
+@include('template.footer')
 
 </body>
 

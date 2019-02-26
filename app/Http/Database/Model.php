@@ -28,6 +28,13 @@ class Model extends Connection
     protected $table;
     
     /**
+     * Get Last Insert Id
+     *
+     * @var integer $last_insert_id
+     */
+    public $last_insert_id;
+    
+    /**
      * Internal End Point
      *
      * @param string $query Set Query
@@ -42,23 +49,37 @@ class Model extends Connection
     /**
      * Get All Records
      *
-     * @param string $select_fields Selecet Fields
-     * @param bool $where_field Fields
-     * @param bool $where_operator Operator
-     * @param bool $where_value Value
+     * @param string $select_fields  Selecet Fields
+     * @param bool   $where_field    Fields
+     * @param bool   $where_operator Operator
+     * @param bool   $where_value    Value
+     * @param bool   $and_where      Additional where
+     * @param bool   $join           Additional
      *
      * @return array
      */
-    public function get($select_fields = "*", $where_field = false, $where_operator = false, $where_value = false)
+    public function get($select_fields = "*", $where_field = false, $where_operator = false, $where_value = false, $and_where = false, $join = false)
     {
         $build_where_query = null;
         
         if ($where_field) {
             $build_where_query = 'WHERE ' . $where_field . ' ' . $where_operator . " '$where_value' ";
         }
+    
+        $build_and_where_query = null;
+    
+        if ($and_where) {
+            $build_and_where_query = "AND  $and_where";
+        }
+    
+        $build_join_query = null;
+    
+        if ($join) {
+            $build_join_query = "$join";
+        }
         
         $query = $this->query(
-            "SELECT " . $select_fields . " FROM " . $this->table . " $build_where_query"
+            "SELECT " . $select_fields . " FROM " . $this->table . " $build_join_query $build_where_query $build_and_where_query"
         );
         
         $data = [];
@@ -72,11 +93,11 @@ class Model extends Connection
     /**
      * Get First Record From Database
      *
-     * @param string $select_fields Selecet Fields
-     * @param bool $where_field Fields
-     * @param bool $where_operator Operator
-     * @param bool $where_value Value
-     * @param bool $to_object Value
+     * @param string $select_fields  Selecet Fields
+     * @param bool   $where_field    Fields
+     * @param bool   $where_operator Operator
+     * @param bool   $where_value    Value
+     * @param bool   $to_object      Value
      *
      * @return mixed
      */
@@ -105,7 +126,7 @@ class Model extends Connection
     /**
      * Model Save
      *
-     * @param array $fields_name Fields Name
+     * @param array $fields_name  Fields Name
      * @param array $fields_value Fields Values
      *
      * @return bool
@@ -118,6 +139,9 @@ class Model extends Connection
                 VALUES (" . implode(', ', array_map('quote', $fields_value)) . ")"
         ) == true
         ) {
+    
+            $this->last_insert_id = mysqli_insert_id($this->connection);
+    
             //return true if execute
             $status = true;
         } else {
@@ -134,9 +158,9 @@ class Model extends Connection
      * Model Update Record
      *
      * @param string $column_name_and_value Colums and Values
-     * @param bool $where_field Fields
-     * @param bool $where_operator Operator
-     * @param bool $where_value Value
+     * @param bool   $where_field           Fields
+     * @param bool   $where_operator        Operator
+     * @param bool   $where_value           Value
      *
      * @return bool
      */
@@ -162,9 +186,9 @@ class Model extends Connection
     /**
      * Model Destroy Record
      *
-     * @param bool $where_field Fields
+     * @param bool $where_field    Fields
      * @param bool $where_operator Operator
-     * @param bool $where_value Value
+     * @param bool $where_value    Value
      *
      * @return bool
      */

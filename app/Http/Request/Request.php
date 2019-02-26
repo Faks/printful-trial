@@ -68,4 +68,25 @@ class Request
     {
         return $this->request;
     }
+    
+    /**
+     * Collect all query segments
+     *
+     * @return array
+     */
+    public function segments()
+    {
+        $segments = explode('/', $_SERVER['REQUEST_URI']);
+        return array_filter($segments);
+    }
+    
+    /**
+     * Returns Last URL
+     *
+     * @return mixed
+     */
+    public function back()
+    {
+        return @$_SERVER['HTTP_REFERER'];
+    }
 }

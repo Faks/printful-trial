@@ -45,11 +45,11 @@ define('MAIL_TO', 'oskars_germovs@inbox.lv');
 /**
  *  Set debug state
  */
-define('APP_DEBUG', true);
+define('APP_DEBUG', false);
 /**
  *  Set debug state session
  */
-define('APP_DEBUG_SESSION', false);
+define('APP_DEBUG_SESSION', true);
 /**
  *  Set debug state session
  *  Clean Session

@@ -33,17 +33,6 @@ class RouteExceptionHandlers extends BaseController implements IExceptionHandler
      */
     public function handleError(Request $request, \Exception $error): void
     {
-        /**
-         * You can use the exception handler to format errors
-         * depending on the request and type.
-         */
-        if ($request->getUrl()->contains('/api')) {
-            response()->json([
-                'error' => $error->getMessage(),
-                'code' => $error->getCode(),
-            ]);
-        }
-        
         /* The router will throw the NotFoundHttpException on 404 */
         if ($error instanceof NotFoundHttpException) {
             /**
