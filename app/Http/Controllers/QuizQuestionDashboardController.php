@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use function compact;
-use function dd;
 use function redirect;
 use function request;
 

@@ -2,14 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Database\Connection;
 use app\Http\Repositories\QuizRepository;
-use function array_count_values;
-use function array_first;
 use function compact;
 use function count;
-use function dd;
-use function dump;
 use function is_array;
 use function modelCount;
 use function now;

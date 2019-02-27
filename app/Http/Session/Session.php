@@ -40,8 +40,8 @@ class Session
     /**
      * Session Set Value
      *
-     * @param string $name Value
-     * @param string $value Value
+     * @param boolean $name         Value
+     * @param boolean $value        Value
      * @param boolean $array_values Build Array
      *
      * @return mixed

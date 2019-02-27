@@ -59,8 +59,8 @@ class BaseController
      * Blade Render
      *
      * @param string $viewRender Render
-     * @param array $data Data
-     * @param array $mergeData Data Merged
+     * @param array  $data       Data
+     * @param array  $mergeData  Data Merged
      *
      * @return mixed
      */

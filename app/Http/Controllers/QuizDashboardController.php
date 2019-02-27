@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use function compact;
-use function dd;
 use function redirect;
 use function request;
 use function session;
@@ -120,7 +119,6 @@ class QuizDashboardController extends BaseController
                 now(),
             ]
         );
-        
         
         if ($quiz_store) {
             session()->forget('errors');

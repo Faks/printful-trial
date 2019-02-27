@@ -27,7 +27,9 @@ class HomeController extends BaseController
      */
     public function index()
     {
+        //Quiz Model Instance
         $quizes = $this->quizModel()->get('*');
+        //Quiz Question Models Instance
         $quiz_questions = $this->quizQuestionModel();
     
         return $this->render(
