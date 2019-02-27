@@ -51,7 +51,7 @@ class QuizQuestionAnswerDashboardController extends BaseController
      *
      * @return mixed
      */
-    public function create($id , $question_id)
+    public function create($id, $question_id)
     {
         return $this->render('pages.create.quiz_question_answer');
     }
@@ -132,7 +132,8 @@ class QuizQuestionAnswerDashboardController extends BaseController
                 'status',
                 'created_at',
                 'updated_at'
-            ], [
+            ],
+            [
                 request()->get('answer'),
                 (int)request()->segments()[3],
                 (int)request()->segments()[5],

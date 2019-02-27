@@ -56,7 +56,9 @@ class UserQuizController extends BaseController
         $quiz_question_answer = $this->quizQuestionModel()
             ->get(
                 '*',
-                'quiz_question_answer.quiz_id', '=', $id,
+                'quiz_question_answer.quiz_id',
+                '=',
+                $id,
                 "quiz_question.quiz_order='" . $answer_order . "' ",
                 "LEFT JOIN quiz_question_answer
                 ON quiz_question.id = quiz_question_answer.quiz_question_id"
@@ -67,7 +69,6 @@ class UserQuizController extends BaseController
         if (modelCount($quiz_question[0]) === request()->segments()[4]) {
             $next_url_type = "value='/quiz/". session()->get('quiz_sign_up_id')."/review";
         } else {
-    
             $increment = request()->segments()[4] += 1;
             $next_url_type
                 = "value='/quiz/". (integer)request()->segments()[2] . "/take/". $increment . " ";
@@ -194,7 +195,11 @@ class UserQuizController extends BaseController
         
         $user_quiz_review = $this->userQuizQuestionsAnswersModel()
             ->get(
-                '*', 'user_quiz_sign_up.name', '=', $user_quiz->name, "user_quiz_sign_up.id='$id_review'",
+                '*',
+                'user_quiz_sign_up.name',
+                '=',
+                $user_quiz->name,
+                "user_quiz_sign_up.id='$id_review'",
                 'LEFT JOIN quiz_question_answer
                     ON quiz_question_answer.id = user_quiz_question_answer.quiz_question_answer_id
 
@@ -206,7 +211,6 @@ class UserQuizController extends BaseController
         $answer_correct_builder = [];
         $total_questions_model = [];
         foreach ($user_quiz_review as $review) {
-    
             $total_questions_model = (array)$this->quizQuestionModel()
                 ->get('count(*)', 'quiz_id', '=', $review->quiz_id);
             
@@ -224,7 +228,8 @@ class UserQuizController extends BaseController
         $total_questions = modelCount((array)modelCount($total_questions_model));
     
         return $this->render(
-            'pages.quiz_review', compact(
+            'pages.quiz_review',
+            compact(
                 'user_quiz',
                 'total_correct_answers',
                 'total_wrong_answers',

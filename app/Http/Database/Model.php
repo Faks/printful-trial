@@ -139,7 +139,6 @@ class Model extends Connection
                 VALUES (" . implode(', ', array_map('quote', $fields_value)) . ")"
         ) == true
         ) {
-    
             $this->last_insert_id = mysqli_insert_id($this->connection);
     
             //return true if execute

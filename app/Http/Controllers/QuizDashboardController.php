@@ -111,7 +111,8 @@ class QuizDashboardController extends BaseController
                 'type',
                 'created_at',
                 'updated_at'
-            ], [
+            ],
+            [
                 request()->get('name'),
                 request()->get('etm'),
                 request()->get('type'),

@@ -125,7 +125,8 @@ class QuizQuestionDashboardController extends BaseController
                 'quiz_id',
                 'created_at',
                 'updated_at'
-            ], [
+            ],
+            [
                 request()->get('question'),
                 (int)$id,
                 now(),
