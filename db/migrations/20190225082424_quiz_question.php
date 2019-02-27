@@ -39,6 +39,7 @@ class QuizQuestion extends AbstractMigration
             ->addColumn('quiz_order', 'integer', ['default' => 1])
             ->addColumn('created_at', 'datetime')
             ->addColumn('updated_at', 'datetime')
+            ->addIndex(['question', 'quiz_id', 'quiz_order'])
             ->create();
     }
 }

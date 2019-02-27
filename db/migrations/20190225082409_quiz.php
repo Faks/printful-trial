@@ -42,6 +42,7 @@ class Quiz extends AbstractMigration
             )
             ->addColumn('created_at', 'datetime')
             ->addColumn('updated_at', 'datetime')
+            ->addIndex(['name', 'etm', 'type'])
             ->create();
     }
 }

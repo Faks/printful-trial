@@ -38,9 +38,16 @@ class UserQuizQuestionsAnswers extends AbstractMigration
             ->addColumn('quiz_question_id', 'integer', ['default' => 0])
             ->addColumn('quiz_question_answer_id', 'integer', ['default' => 0])
             ->addColumn('user_quiz_sign_up_id', 'integer', ['default' => 0])
-            ->addColumn('user_quiz_question_answer', 'string', ['limit' => 255])
             ->addColumn('created_at', 'datetime')
             ->addColumn('updated_at', 'datetime')
+            ->addIndex(
+                [
+                    'quiz_id',
+                    'quiz_question_id',
+                    'quiz_question_answer_id',
+                    'user_quiz_sign_up_id'
+                ]
+            )
             ->create();
     }
 }

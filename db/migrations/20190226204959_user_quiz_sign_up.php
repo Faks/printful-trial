@@ -38,6 +38,7 @@ class UserQuizSignUp extends AbstractMigration
             ->addColumn('quiz_id', 'integer', ['default' => 0])
             ->addColumn('created_at', 'datetime')
             ->addColumn('updated_at', 'datetime')
+            ->addIndex(['name', 'quiz_id',])
             ->create();
     }
 }

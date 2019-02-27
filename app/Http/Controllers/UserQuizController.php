@@ -73,9 +73,7 @@ class UserQuizController extends BaseController
             $next_url_type
                 = "value='/quiz/". (integer)request()->segments()[2] . "/take/". $increment . " ";
         }
-    
-//        dump($next_url_type);
-    
+        
         return $this->render(
             'pages.quiz_questions',
             compact(
@@ -94,8 +92,7 @@ class UserQuizController extends BaseController
      */
     public function storeAnswer()
     {
-        $user_quiz_answer_store = null;
-        if (is_array(request()->get('answer'))) {
+        if (is_array(request()->get('answer')) === true) {
             foreach (request()->get('answer') as $answer) {
                 $user_quiz_answer_store = $this->userQuizQuestionsAnswersModel()->save(
                     [
@@ -103,7 +100,6 @@ class UserQuizController extends BaseController
                         'quiz_question_id',
                         'quiz_question_answer_id',
                         'user_quiz_sign_up_id',
-                        'user_quiz_question_answer',
                         'created_at',
                         'updated_at'
                     ],
@@ -112,11 +108,16 @@ class UserQuizController extends BaseController
                         request()->get('quiz_question_id'),
                         $answer,
                         session()->get('quiz_sign_up_id'),
-                        null,
                         now(),
                         now()
                     ]
                 );
+    
+                if ($user_quiz_answer_store) {
+                    $this->redirect_path = request()->get('next_url');
+                } else {
+                    $this->redirect_path = request()->back();
+                }
             }
         } else {
             $user_quiz_answer_store = $this->userQuizQuestionsAnswersModel()->save(
@@ -125,7 +126,6 @@ class UserQuizController extends BaseController
                     'quiz_question_id',
                     'quiz_question_answer_id',
                     'user_quiz_sign_up_id',
-                    'user_quiz_question_answer',
                     'created_at',
                     'updated_at'
                 ],
@@ -134,17 +134,16 @@ class UserQuizController extends BaseController
                     request()->get('quiz_question_id'),
                     request()->get('answer'),
                     session()->get('quiz_sign_up_id'),
-                    null,
                     now(),
                     now()
                 ]
             );
-        }
-        
-        if ($user_quiz_answer_store) {
-            $this->redirect_path = request()->get('next_url');
-        } else {
-            $this->redirect_path = request()->back();
+    
+            if ($user_quiz_answer_store) {
+                $this->redirect_path = request()->get('next_url');
+            } else {
+                $this->redirect_path = request()->back();
+            }
         }
     
         //Redirect

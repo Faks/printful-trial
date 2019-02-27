@@ -51,7 +51,7 @@
                             <button type="submit" class="btn btn-primary">Next</button>
                         </div>
                         
-                        <input type="hidden" name="next_url" @php echo $next_url_type . "'"; @endphp>
+                        <input type="hidden" name="next_url" @php echo $next_url_type."'"; @endphp>
                         <input type="hidden" name="quiz_question_id"
                                value="{{ $quiz_question_answer[0]->quiz_question_id }}">
                     </form>
