@@ -1,4 +1,4 @@
-# git clone https://bitbucket.org/Faks/megabit-trial.git
+# git clone https://Faks@bitbucket.org/Faks/printfull-trial.git
 # After cloning from git run composer install (CLI)to install all dependencies.
 # After alter these two database settings.
 # Database Settings are located in env.php
