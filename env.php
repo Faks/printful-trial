@@ -49,7 +49,7 @@ define('APP_DEBUG', false);
 /**
  *  Set debug state session
  */
-define('APP_DEBUG_SESSION', true);
+define('APP_DEBUG_SESSION', false);
 /**
  *  Set debug state session
  *  Clean Session
@@ -58,4 +58,4 @@ define('APP_DEBUG_SESSION_PURGE', false);
 /**
  *  Set debug state request
  */
-define('APP_DEBUG_REQUEST', true);
+define('APP_DEBUG_REQUEST', false);
