@@ -40,62 +40,6 @@
                                             </div>
                                         
                                         @endforeach
-                                        
-                                        {{--<div class="col-3">--}}
-                                        {{--<label class="form-check-label">--}}
-                                        {{--<input name="answer" class="form-check-input" type="radio">Remember me--}}
-                                        {{--</label>--}}
-                                        {{----}}
-                                        {{--<label class="form-check-label">--}}
-                                        {{--<input name="answer" class="form-check-input" type="radio">Remember me--}}
-                                        {{--</label>--}}
-                                        {{----}}
-                                        {{--<label class="form-check-label">--}}
-                                        {{--<input name="answer" class="form-check-input" type="radio">Remember me--}}
-                                        {{--</label>--}}
-                                        {{--</div>--}}
-                                        {{----}}
-                                        {{--<div class="col-3">--}}
-                                        {{--<label class="form-check-label">--}}
-                                        {{--<input name="answer" class="form-check-input" type="radio">Remember me--}}
-                                        {{--</label>--}}
-                                        {{----}}
-                                        {{--<label class="form-check-label">--}}
-                                        {{--<input name="answer" class="form-check-input" type="radio">Remember me--}}
-                                        {{--</label>--}}
-                                        {{----}}
-                                        {{--<label class="form-check-label">--}}
-                                        {{--<input name="answer" class="form-check-input" type="radio">Remember me--}}
-                                        {{--</label>--}}
-                                        {{--</div>--}}
-                                        {{----}}
-                                        {{--<div class="col-3">--}}
-                                        {{--<label class="form-check-label">--}}
-                                        {{--<input name="answer" class="form-check-input" type="radio">Remember me--}}
-                                        {{--</label>--}}
-                                        {{----}}
-                                        {{--<label class="form-check-label">--}}
-                                        {{--<input name="answer" class="form-check-input" type="radio">Remember me--}}
-                                        {{--</label>--}}
-                                        {{----}}
-                                        {{--<label class="form-check-label">--}}
-                                        {{--<input name="answer" class="form-check-input" type="radio">Remember me--}}
-                                        {{--</label>--}}
-                                        {{--</div>--}}
-                                        {{----}}
-                                        {{--<div class="col-3">--}}
-                                        {{--<label class="form-check-label">--}}
-                                        {{--<input name="answer" class="form-check-input" type="radio">Remember me--}}
-                                        {{--</label>--}}
-                                        {{----}}
-                                        {{--<label class="form-check-label">--}}
-                                        {{--<input name="answer" class="form-check-input" type="radio">Remember me--}}
-                                        {{--</label>--}}
-                                        {{----}}
-                                        {{--<label class="form-check-label">--}}
-                                        {{--<input name="answer" class="form-check-input" type="radio">Remember me--}}
-                                        {{--</label>--}}
-                                        {{--</div>--}}
                                     
                                     </div>
                                 </div>
@@ -107,20 +51,7 @@
                             <button type="submit" class="btn btn-primary">Next</button>
                         </div>
                         
-                        <input
-                            
-                            
-                            @if (modelCount($quiz_question[0]) == request()->segments()[4])
-                            type="hidden"
-                            name="next_review" value="yes"
-                            @else
-                            type="hidden"
-                            name="next_url" value="/quiz/{{ request()->segments()[2] }}/take/{{request()->segments()
-                            [4] += 1 }}"
-                            @endif
-                        
-                        >
-                        
+                        <input type="hidden" name="next_url" @php echo $next_url_type . "'"; @endphp>
                         <input type="hidden" name="quiz_question_id"
                                value="{{ $quiz_question_answer[0]->quiz_question_id }}">
                     </form>
