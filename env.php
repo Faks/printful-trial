@@ -17,7 +17,7 @@
 /**
  * Database Connection
  */
-define('DB_HOST', "173.249.33.8");
+define('DB_HOST', 'localhost');
 /**
  *  Database Port
  */

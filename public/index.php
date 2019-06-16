@@ -15,6 +15,11 @@
  */
 
 /**
+ * Set custom session storage path
+ */
+session_save_path(dirname($_SERVER['DOCUMENT_ROOT']) . '/storage/sessions/');
+
+/**
  * Init Session
  **/
 session_start();
