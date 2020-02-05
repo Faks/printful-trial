@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Megabit Trial</title>
+    <title>Printful Trial</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     

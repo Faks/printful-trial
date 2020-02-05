@@ -2,8 +2,9 @@
 
 namespace App\Http\Database;
 
-use Exception;
-use mysqli;
+use PDO;
+use PDOException;
+
 use const DB_HOST;
 use const DB_NAME;
 use const DB_PASSWORD;
@@ -28,7 +29,7 @@ class Connection
     /**
      * Init MySQL Connection
      *
-     * @var mysqli $connection Connection
+     * @var PDO $connection Connection
      */
     protected $connection;
     
@@ -37,10 +38,19 @@ class Connection
      */
     public function __construct()
     {
-        $this->connection = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
-        
-        if (mysqli_connect_errno() > 0) {
-            throw new Exception("Database Can't Connect!");
+        try {
+            $this->connection = new PDO(
+                'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USERNAME, DB_PASSWORD, [
+                                                                  PDO::MYSQL_ATTR_SSL_KEY                => '/var/www/ssl/mysql/client-key.pem',
+                                                                  PDO::MYSQL_ATTR_SSL_CERT               => '/var/www/ssl/mysql/client-cert.pem',
+                                                                  PDO::MYSQL_ATTR_SSL_CA                 => '/var/www/ssl/mysql/ca-cert.pem',
+                                                                  PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
+                                                              ]
+            );
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // Error handling
+        } catch (PDOException $e) {
+            die('Failed to connect to database: ' . $e->getMessage());
         }
     }
 }
