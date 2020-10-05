@@ -17,7 +17,7 @@
 /**
  * Database Connection
  */
-define('DB_HOST', 'solum-designum.com');
+define('DB_HOST', 'localhost');
 /**
  *  Database Port
  */
@@ -29,7 +29,7 @@ define('DB_USERNAME', 'printful_trial');
 /**
  * Database Password
  */
-define('DB_PASSWORD', 'UwABhXKrYBZhFck1');
+define('DB_PASSWORD', 'RWVnRjaisFOrGypB');
 /**
  * Database Name
  */

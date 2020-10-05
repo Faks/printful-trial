@@ -1,4 +1,4 @@
-#PHP 7.1 is required for stable work
+#PHP 7.1 - 7.2 is required for stable work
 # git clone https://Faks@bitbucket.org/Faks/printfull-trial.git
 # After cloning from git run composer install (CLI)to install all dependencies.
 # After alter these two database settings.

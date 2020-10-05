@@ -26,7 +26,7 @@ class Request
      * @var
      */
     protected $request;
-    
+
     /**
      * Request constructor.
      */
@@ -34,7 +34,7 @@ class Request
     {
         $this->request = ($_POST ?? $_GET ?? $_REQUEST);
     }
-    
+
     /**
      * Returns selected by name
      *
@@ -46,7 +46,7 @@ class Request
     {
         return @$this->request["$field_name"];
     }
-    
+
     /**
      * Returns does field is in request
      *
@@ -56,9 +56,9 @@ class Request
      */
     public function has($field_name)
     {
-        return @(!is_null($this->request["$field_name"])) ? true : false;
+        return @(! is_null($this->request["$field_name"])) ? true : false;
     }
-    
+
     /**
      * Returns All Request
      *
@@ -68,7 +68,7 @@ class Request
     {
         return $this->request;
     }
-    
+
     /**
      * Collect all query segments
      *
@@ -79,7 +79,27 @@ class Request
         $segments = explode('/', $_SERVER['REQUEST_URI']);
         return array_filter($segments);
     }
-    
+
+    /**
+     * Return active route path
+     *
+     * @return string
+     */
+    public function path(): string
+    {
+        return $_SERVER['REQUEST_URI'];
+    }
+
+    /**
+     * @param string $path
+     *
+     * @return string|null
+     */
+    public function pathIsActive(string $path): ?string
+    {
+        return $this->path() === $path ? 'active' : null;
+    }
+
     /**
      * Returns Last URL
      *

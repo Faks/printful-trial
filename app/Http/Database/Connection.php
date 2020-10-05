@@ -32,7 +32,7 @@ class Connection
      * @var PDO $connection Connection
      */
     protected $connection;
-    
+
     /**
      * Connection constructor.
      */
@@ -40,12 +40,7 @@ class Connection
     {
         try {
             $this->connection = new PDO(
-                'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USERNAME, DB_PASSWORD, [
-                                                                  PDO::MYSQL_ATTR_SSL_KEY                => '/var/www/ssl/mysql/client-key.pem',
-                                                                  PDO::MYSQL_ATTR_SSL_CERT               => '/var/www/ssl/mysql/client-cert.pem',
-                                                                  PDO::MYSQL_ATTR_SSL_CA                 => '/var/www/ssl/mysql/ca-cert.pem',
-                                                                  PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
-                                                              ]
+                'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USERNAME, DB_PASSWORD
             );
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             // Error handling

@@ -10,7 +10,7 @@ environments:
         host: localhost
         name: production_db
         user: printful_trial
-        pass: 'UwABhXKrYBZhFck1'
+        pass: 'RWVnRjaisFOrGypB'
         port: 3306
         charset: utf8
 
@@ -19,7 +19,7 @@ environments:
         host: localhost
         name: printful_trial
         user: printful_trial
-        pass: 'UwABhXKrYBZhFck1'
+        pass: 'RWVnRjaisFOrGypB'
         port: 3306
         charset: utf8
 
@@ -28,7 +28,7 @@ environments:
         host: localhost
         name: printful_trial
         user: printful_trial
-        pass: 'UwABhXKrYBZhFck1'
+        pass: 'RWVnRjaisFOrGypB'
         port: 3306
         charset: utf8
 
