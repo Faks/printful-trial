@@ -63,3 +63,5 @@ fabric.properties
 .git/
 .idea/
 storage/
+
+.php_cs.cache
